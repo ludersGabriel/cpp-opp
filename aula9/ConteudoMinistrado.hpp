@@ -8,8 +8,6 @@ class ConteudoMinistrado {
   ConteudoMinistrado(std::string descricao,
                      unsigned short cargaHorariaConteudo);
 
-  ~ConteudoMinistrado();
-
   std::string& getDescricao();
   unsigned short getCargaHorariaConteudo();
   unsigned int getId();

@@ -5,25 +5,27 @@
 #include <string>
 
 class Pessoa {
-   public:
-    Pessoa();
-    Pessoa(std::string nomePessoa);
-    Pessoa(std::string nomePessoa, uint64_t cpfPessoa, unsigned short idade);
+ public:
+  Pessoa();
+  Pessoa(std::string nomePessoa);
+  Pessoa(std::string nomePessoa, uint64_t cpfPessoa, unsigned short idade);
 
-    uint64_t getCpf();
-    void setCpf(uint64_t novoCpf);
+  ~Pessoa();
 
-    std::string getNome();
-    void setNome(std::string novoNome);
+  uint64_t getCpf();
+  void setCpf(uint64_t novoCpf);
 
-    unsigned short int getIdade();
-    void setIdade(unsigned short novaIdade);
+  std::string getNome();
+  void setNome(std::string novoNome);
 
-   private:
-    bool validarCPF(uint64_t cpfTeste);
+  unsigned short int getIdade();
+  void setIdade(unsigned short novaIdade);
 
-    std::string nome;
-    uint64_t cpf;
-    uint8_t idade;
+ private:
+  bool validarCPF(uint64_t cpfTeste);
+
+  std::string nome;
+  uint64_t cpf;
+  uint8_t idade;
 };
 #endif

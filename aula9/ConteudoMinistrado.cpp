@@ -10,8 +10,6 @@ ConteudoMinistrado::ConteudoMinistrado(std::string descricao,
   ConteudoMinistrado::proxId++;
 }
 
-ConteudoMinistrado::~ConteudoMinistrado() {}
-
 std::string& ConteudoMinistrado::getDescricao() { return descricao; }
 
 unsigned short ConteudoMinistrado::getCargaHorariaConteudo() {
