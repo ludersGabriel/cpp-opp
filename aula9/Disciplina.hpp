@@ -12,7 +12,7 @@ class SalaAula;  // Forward Declaration
 class Disciplina {
  public:
   Disciplina(std::string nome);
-  Disciplina(std::string nome, SalaAula* sala);
+  Disciplina(std::string nome, SalaAula *sala);
 
   std::string getNome();
   void setNome(std::string nome);
@@ -20,28 +20,29 @@ class Disciplina {
   int getCargaHoraria();
   void setCargaHoraria(unsigned int carga);
 
-  Pessoa* getProfessor();
-  void setProfessor(Pessoa* prof);
+  Pessoa *getProfessor();
+  void setProfessor(Pessoa *prof);
 
-  void setSalaAula(SalaAula* sala);
-  SalaAula* getSalaAula();
+  void setSalaAula(SalaAula *sala);
+  SalaAula *getSalaAula();
 
-  void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso);
+  void imprimirDados(std::string &cabecalho, unsigned int cargaTotalCurso);
 
   void adicionarConteudoMinistrado(std::string conteudo,
                                    unsigned short cargaHorariaConteudo);
   void imprimirConteudosMinistrados();
-  std::list<ConteudoMinistrado*>& getConteudos();
+  std::list<ConteudoMinistrado *> &getConteudos();
 
   void removerConteudoMinistrado(unsigned int id);
+  void removerConteudoMinistrado(std::string conteudo);
   void limparConteudosMinistrados();
 
  private:
   std::string nome;
   unsigned short int cargaHoraria;
-  Pessoa* professor;
-  SalaAula* sala;
+  Pessoa *professor;
+  SalaAula *sala;
 
-  std::list<ConteudoMinistrado*> conteudos;
+  std::list<ConteudoMinistrado *> conteudos;
 };
 #endif

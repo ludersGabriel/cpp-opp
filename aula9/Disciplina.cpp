@@ -6,7 +6,7 @@
 
 Disciplina::Disciplina(std::string nome) : nome{nome}, sala{nullptr} {}
 
-Disciplina::Disciplina(std::string nome, SalaAula* sala) : Disciplina{nome} {
+Disciplina::Disciplina(std::string nome, SalaAula *sala) : Disciplina{nome} {
   this->setSalaAula(sala);
 }
 
@@ -20,11 +20,11 @@ void Disciplina::setCargaHoraria(unsigned int carga) {
   this->cargaHoraria = carga;
 }
 
-Pessoa* Disciplina::getProfessor() { return this->professor; }
+Pessoa *Disciplina::getProfessor() { return this->professor; }
 
-void Disciplina::setProfessor(Pessoa* prof) { this->professor = prof; }
+void Disciplina::setProfessor(Pessoa *prof) { this->professor = prof; }
 
-void Disciplina::setSalaAula(SalaAula* sala) {
+void Disciplina::setSalaAula(SalaAula *sala) {
   if (this->sala !=
       nullptr)  // se já existia uma sala, remover a disciplina dessa sala
     this->sala->disciplinasMinistradas.remove(this);
@@ -34,9 +34,9 @@ void Disciplina::setSalaAula(SalaAula* sala) {
         this);  // adicionar a disciplina na nova sala
 }
 
-SalaAula* Disciplina::getSalaAula() { return this->sala; }
+SalaAula *Disciplina::getSalaAula() { return this->sala; }
 
-void Disciplina::imprimirDados(std::string& cabecalho,
+void Disciplina::imprimirDados(std::string &cabecalho,
                                unsigned int cargaTotalCurso) {
   double pctCurso = (double)this->cargaHoraria / cargaTotalCurso;
   pctCurso = pctCurso * 100;
@@ -53,19 +53,20 @@ void Disciplina::adicionarConteudoMinistrado(
       new ConteudoMinistrado{conteudo, cargaHorariaConteudo});
 }
 void Disciplina::imprimirConteudosMinistrados() {
-  std::list<ConteudoMinistrado*>::iterator it;
+  std::list<ConteudoMinistrado *>::iterator it;
   for (it = conteudos.begin(); it != conteudos.end(); it++) {
     std::cout << "Id: " << (*it)->getId() << "\n"
               << "Conteudo: " << (*it)->getDescricao() << "\n"
               << "Carga: " << (*it)->getCargaHorariaConteudo() << "\n\n";
   }
 }
-std::list<ConteudoMinistrado*>& Disciplina::getConteudos() {
+
+std::list<ConteudoMinistrado *> &Disciplina::getConteudos() {
   return this->conteudos;
 }
 
 void Disciplina::removerConteudoMinistrado(unsigned int id) {
-  std::list<ConteudoMinistrado*>::iterator it;
+  std::list<ConteudoMinistrado *>::iterator it;
   for (it = conteudos.begin(); it != conteudos.end(); it++) {
     if ((*it)->getId() == id) {
       delete *it;
@@ -77,8 +78,21 @@ void Disciplina::removerConteudoMinistrado(unsigned int id) {
 }
 
 void Disciplina::limparConteudosMinistrados() {
-  std::list<ConteudoMinistrado*>::iterator it;
+  std::list<ConteudoMinistrado *>::iterator it;
   for (it = conteudos.begin(); it != conteudos.end(); it++) {
     delete *it;
+  }
+
+  conteudos.clear();
+}
+
+void Disciplina::removerConteudoMinistrado(std::string conteudo) {
+  std::list<ConteudoMinistrado *>::iterator it;
+  for (it = conteudos.begin(); it != conteudos.end();) {
+    if ((*it)->getDescricao() == conteudo) {
+      delete *it;
+      it = conteudos.erase(it);
+    } else
+      ++it;
   }
 }

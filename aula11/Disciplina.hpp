@@ -1,51 +1,53 @@
 #ifndef DISCIPLINA_H
 #define DISCIPLINA_H
 
-#include <string>
 #include <list>
+#include <string>
 
-#include "Pessoa.hpp"
 #include "ConteudoMinistrado.hpp"
+#include "Pessoa.hpp"
 
-class SalaAula;//Forward Declaration
+class SalaAula;  // Forward Declaration
 
-class Disciplina{
-	public:
-	Disciplina(std::string nome);
-		Disciplina(std::string nome, SalaAula* sala);
+class Disciplina {
+ public:
+  Disciplina(std::string nome);
+  Disciplina(std::string nome, SalaAula* sala);
 
-		~Disciplina();
+  ~Disciplina();
 
-		std::string getNome();
-		void setNome(std::string nome);
-		
-		int getCargaHoraria();
-		void setCargaHoraria(unsigned int carga);
+  std::string getNome() const;
+  void setNome(std::string nome);
 
-		Pessoa* getProfessor();
-        void setProfessor(Pessoa* prof);
+  int getCargaHoraria();
+  void setCargaHoraria(const unsigned int carga);
 
-		void setSalaAula(SalaAula* sala);
-        SalaAula* getSalaAula();
-		void anularSalaAula();
+  const Pessoa* getProfessor() const;
+  void setProfessor(const Pessoa* prof);
 
-		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso);
+  void setSalaAula(SalaAula* sala);
+  const SalaAula* getSalaAula() const;
+  void anularSalaAula();
 
-		void adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo);
-        void imprimirConteudosMinistrados();
-		std::list<ConteudoMinistrado*>& getConteudos();
+  void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso);
 
-		void adicionarAluno(Pessoa* aluno);
-		void removerAluno(Pessoa* aluno);
-		void removerAluno(unsigned long cpf);
-		std::list<Pessoa*>& getAlunos();
-	private:
-		std::string nome;
-		unsigned short int cargaHoraria;
-		Pessoa* professor;
-		SalaAula* sala;
+  void adicionarConteudoMinistrado(std::string conteudo,
+                                   unsigned short cargaHorariaConteudo);
+  void imprimirConteudosMinistrados();
+  const std::list<ConteudoMinistrado*>& getConteudos() const;
 
-		std::list<ConteudoMinistrado*> conteudos;
-		std::list<Pessoa*> alunos;
+  void adicionarAluno(Pessoa* aluno);
+  void removerAluno(Pessoa* aluno);
+  void removerAluno(unsigned long cpf);
+  std::list<Pessoa*>& getAlunos();
+
+ private:
+  std::string nome;
+  unsigned short int cargaHoraria;
+  const Pessoa* professor;
+  SalaAula* sala;
+
+  std::list<ConteudoMinistrado*> conteudos;
+  std::list<Pessoa*> alunos;
 };
 #endif

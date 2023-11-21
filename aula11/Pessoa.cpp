@@ -13,7 +13,7 @@ Pessoa::Pessoa(std::string nomePessoa, uint64_t cpfPessoa,
   setIdade(idadePessoa);
 }
 
-uint64_t Pessoa::getCpf() {
+uint64_t Pessoa::getCpf() const {
   // retorna uma cópia do cpf
   return cpf;
 }
@@ -31,9 +31,11 @@ std::string Pessoa::getNome() const { return nome; }
 
 void Pessoa::setNome(const std::string& novoNome) { nome = novoNome; }
 
-unsigned short int Pessoa::getIdade() { return (unsigned short int)idade; }
+unsigned short int Pessoa::getIdade() const {
+  return (unsigned short int)idade;
+}
 
-void Pessoa::setIdade(unsigned short int novaIdade) {
+void Pessoa::setIdade(const unsigned short int novaIdade) {
   if (novaIdade < 120)
     idade = (uint8_t)novaIdade;
   else

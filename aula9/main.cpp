@@ -11,16 +11,23 @@ int main() {
   dis1.setProfessor(&prof1);
   dis1.adicionarConteudoMinistrado("Ponteiros", 4);
   dis1.adicionarConteudoMinistrado("Referencias", 2);
-  Console::imprimirDadosDisciplina(dis1);
+  dis1.adicionarConteudoMinistrado("ponteiros", 3);
+  dis1.adicionarConteudoMinistrado("ponteiros", 3);
+  dis1.adicionarConteudoMinistrado("ponteiros", 3);
+  dis1.adicionarConteudoMinistrado("ponteiros", 3);
 
-  std::cout << "Removendo conteudo de id 1" << std::endl;
-  dis1.removerConteudoMinistrado(1);
+  std::list<ConteudoMinistrado*>& conteudos = dis1.getConteudos();
 
-  Console::imprimirDadosDisciplina(dis1);
+  for (auto conteudo : conteudos) {
+    std::cout << conteudo->getDescricao() << std::endl;
+  }
 
-  std::cout << "Limpando conteudos" << std::endl;
-
+  dis1.removerConteudoMinistrado("ponteiros");
   dis1.limparConteudosMinistrados();
+
+  for (auto conteudo : conteudos) {
+    std::cout << conteudo->getDescricao() << std::endl;
+  }
 
   return 0;
 }

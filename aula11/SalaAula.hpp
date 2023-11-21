@@ -1,28 +1,29 @@
 #ifndef SALA_AULA_H
 #define SALA_AULA_H
 
-#include <string>
 #include <list>
+#include <string>
 
 #include "Disciplina.hpp"
 
-class SalaAula{
-	friend void Disciplina::setSalaAula(SalaAula* salaAula);
+class SalaAula {
+  friend void Disciplina::setSalaAula(SalaAula* salaAula);
 
-	public:
-		SalaAula(std::string nome, unsigned int capacidade);
-		~SalaAula();
-		
-		std::string getNome();
-		void setNome(std::string nome);
+ public:
+  SalaAula(std::string nome, unsigned int capacidade);
+  ~SalaAula();
 
-		unsigned int getCapacidade();
-		void setCapcidade(unsigned int capacidade);
+  std::string getNome();
+  void setNome(std::string nome);
 
-        std::list<Disciplina*>& getDisciplinas();
-	private:
-		std::string nome;
-		unsigned int capacidade;
-		std::list<Disciplina*> disciplinasMinistradas;
+  unsigned int getCapacidade();
+  void setCapcidade(unsigned int capacidade);
+
+  std::list<Disciplina*>& getDisciplinas();
+
+ private:
+  std::string nome;
+  unsigned int capacidade;
+  std::list<Disciplina*> disciplinasMinistradas;
 };
 #endif
